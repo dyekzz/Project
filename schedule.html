@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Photo Letter Studio - Schedule</title>
+    <!-- FullCalendar CSS -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 토요일과 일요일 색상 설정 */
+        .fc-day-sat {
+            background-color: #e0f7fa !important; /* 토요일: 파란색 */
+        }
+        .fc-day-sun {
+            background-color: #ffebee !important; /* 일요일: 빨간색 */
+        }
+        /* 예약 상태에 따른 색상 */
+        .fc-event-room-rental {
+            background-color: #ffcc80 !important; /* 룸 대여: 주황색 */
+        }
+        .fc-event-outdoor-shoot {
+            background-color: #80cbc4 !important; /* 출장 촬영: 초록색 */
+        }
+        .fc-event-waiting {
+            background-color: #ffcdd2 !important; /* 대기 예약: 연분홍색 */
+        }
+        .fc-event-shooting {
+            background-color: #90caf9 !important; /* 촬영 예약: 파란색 */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="border-bottom py-2">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html"><i class="bi bi-camera"></i> Photo Letter Studio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house"></i> Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="schedule.html"><i class="bi bi-calendar"></i> Schedule</a></li>
+                        <li class="nav-item"><a class="nav-link" href="qna.html"><i class="bi bi-question-circle"></i> Q&A</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reservation.html"><i class="bi bi-bookmark"></i> Reservation</a></li>
+                        <li class="nav-item"><a class="nav-link" href="location.html"><i class="bi bi-geo-alt"></i> Location</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/photoletter_studio/" target="_blank"><i class="bi bi-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Schedule Section -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">예약 스케줄</h2>
+        <div id='calendar'></div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <h5>PHOTO LETTER STUDIO</h5>
+            <p>(주) 포토레터<br>E : photostudio@naver.com<br>P : 0507-1338-9603</p>
+            <p>B : 국민은행 061701-04-290177 (주)포토레터<br>A : 전남 순천시 연향3로 4-12 층<br>4-12th floor, Yeonhyang 3-ro, Suncheon-si, Jeollanam-do Republic of Korea 07201</p>
+            <p><a href="#" class="text-white">Terms of Use</a> | <a href="#" class="text-white">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- FullCalendar JS -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Script for FullCalendar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'ko', // 한국어 설정
+                height: 650, // 캘린더 높이 설정
+                contentHeight: 600, // 캘린더 내부 높이 설정
+                events: [
+                    {
+                        title: '룸 대여',
+                        start: '2024-10-01T09:00:00', // 시작 시간
+                        end: '2024-10-01T12:00:00',   // 종료 시간
+                        className: 'fc-event-room-rental'
+                    },
+                    {
+                        title: '촬영 예약',
+                        start: '2024-10-05T13:00:00',
+                        end: '2024-10-05T16:00:00',
+                        className: 'fc-event-shooting'
+                    },
+                    {
+                        title: '대기 예약',
+                        start: '2024-10-09T10:00:00',
+                        end: '2024-10-09T12:00:00',
+                        className: 'fc-event-waiting'
+                    },
+                    {
+                        title: '출장 촬영',
+                        start: '2024-10-15T09:00:00',
+                        end: '2024-10-15T18:00:00',
+                        className: 'fc-event-outdoor-shoot'
+                    },
+                    {
+                        title: '촬영 예약',
+                        start: '2024-10-22T14:00:00',
+                        end: '2024-10-22T17:00:00',
+                        className: 'fc-event-shooting'
+                    }
+                ],
+                dayCellDidMount: function(info) {
+                    if (info.date.getDay() === 0) { // 일요일 빨간색 처리
+                        info.el.style.backgroundColor = '#ffebee';
+                    } else if (info.date.getDay() === 6) { // 토요일 파란색 처리
+                        info.el.style.backgroundColor = '#e0f7fa';
+                    }
+                }
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+</html>
